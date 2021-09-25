@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static%}
+
+{% block title %}日記編集|private Diary{% endblock %}
+
+{% block active_list %}active{% endblock %}
+
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class = "my-div-style">
+            <form method="POST" enctype='multipart/form-date'>
+                {% csrf_token %}
+                <table class ="table">
+                    {{form.as_table}}
+                </table>
+                <button class ="btn btn-primary"type="submit">更新</button>
+                <a class="bth bth-secondary ml-2" href="{% url 'itsuki:detail' object.pk %}">キャンセル</a>
+            </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
