@@ -1,4 +1,4 @@
-
+from django import forms
 from django.contrib import messages
 from django.core.mail import EmailMessage, message
 from .models import Diary
