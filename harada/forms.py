@@ -37,13 +37,13 @@ class InquiryForm(forms.Form):
 
 
 
-# from .models import Diary
+from .models import Diary
 
-# class DiaryCreateForm(forms.ModelForm):
-#     class Meta:
-#         model = Diary
-#         fields = ('title','content', 'photo1','photo2','photo3')
-#     def __init__(self, *args, **kwatgs):
-#         super().__init__(*args, **kwatgs)
-#         for field in self.fields.values():
-#             field.widget.attrs['class'] = 'form-control'
+class DiaryCreateForm(forms.ModelForm):
+    class Meta:
+        model = Diary
+        fields = ('title','content', 'photo1','photo2','photo3')
+    def __init__(self, *args, **kwatgs):
+        super().__init__(*args, **kwatgs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'

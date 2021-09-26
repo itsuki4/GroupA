@@ -39,3 +39,54 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
         return diaries
 
 
+from .forms import InquiryForm, DiaryCreateForm
+
+class DiaryDetailView(LoginRequiredMixin,generic.DetailView):
+    model = Diary
+    template_name = 'diary/diary_detail.html'
+    # pk_url_kwarg = 'id'
+
+
+class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Diary
+    template_name = 'diary/diary_create.html'
+    form_class = DiaryCreateForm
+    success_url = reverse_lazy('harada:diary_list')
+
+    def form_valid(self, form):
+        #p270
+        diary = form.save(commit=False)
+        diary.user = self.request.user
+        diary.save()
+        messages.success(self.request,'日記を作成しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self,form):
+        messages.error(self.request,"日記の作成に失敗しました。")
+        return super().form_incalid(form)
+
+
+class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
+    model = Diary
+    template_name = 'diary/diary_update.html'
+    form_class = DiaryCreateForm
+
+    def get_success_url(self):
+        return reverse_lazy('harada:diary_detail', kwargs={'pk':self.kwargs['pk']})
+
+    def form_valid(self,form):
+        messages.success(self.request,'日記を更新しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self,form):
+        messages.error(self.request,"日記の更新に失敗しました。")
+        return super().form_invalid(form)
+
+class DiaryDeleteView(LoginRequiredMixin,generic.DeleteView):
+    model = Diary
+    template_name = 'diary/diary_delete.html'
+    success_url = reverse_lazy('harada:diary_list')
+
+    def delete(self,request, *args, **kwargs):
+        messages.success(self.request,"日記を削除しました。")
+        return super().delete(request, *args, **kwargs)
