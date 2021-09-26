@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
 
-{% block title%}日記一覧|Private Diary{% endblock %}
+{% block title %}日記一覧|Private Diary{% endblock %}
 
-{% block active_diary_list%}active{%endblock%}
+{% block active_diary_list%}active{% endblock %}
 
-{%block contents%}
+{% block contents %}
 <div class ="container">
     <div class ="row">
         <div class ="my-div-style w-100">
@@ -13,7 +13,7 @@
                 <div class = "clearfix">
                     <a class = "bth bth-primary float-right"href="{% url 'diary:diary_create' %}">新規作成</a>
                 </div>
-                {%for diary in diary_list%}
+                {% for diary in diary_list %}
                 <div class="post-preview">
                 <a href="{% url 'diary:diary_detail' diary.pk%}">
                     <h2 class="post-title">
@@ -26,13 +26,13 @@
                 <p class="post-mate">{{diary.created_at}}</p>
             </div>
             <hr>
-            {%empty%}
+            {% empty %}
             <p>日記がありません。</p>
-            {%endfor%}
+            {% endfor %}
 
-            {%if is_paginated%}
+            {% if is_paginated %}
             <ul class ="pagination">
-                {%if page_obj.has_previous%}
+                {% if page_obj.has_previous %}
                 <li class="page-item">
                     <a class="page-link"href="?page={{page_obj.privious_page_number}}">
                         <span aria-hidden="true">
@@ -40,7 +40,7 @@
                         </span>
                     </a>
                 </li>
-                {%endif%}
+                {% endif %}
 
                 {% for page_num in page_obj.paginator.page_range %}
                 {% if page_obj.number == page_num %}
@@ -49,24 +49,24 @@
                     {{page_num}}
                 </a>
                 </li>
-                {%else%}
+                {% else %}
                 <li class="page-item">
                     <a class ="page-link"href="?page={{page_num}}">
                         {{page_num}}
                     </a>
                 </li>
-                {%endif%}
-                {%endfor%}
+                {% endif %}
+                {% endfor %}
 
-                {%if page_obj.has_next%}
+                {% if page_obj.has_next %}
                 <li class="page-item">
                     <a class="page-link"href="?page={{page_obj.next_page_num_number}}">
                         <span aria-hidden="true">&aquo;</span>
                     </a>
                 </li>
-                {%endif%}
+                {% endif %}
             </ul>
-            {%endif%}
+            {% endif %}
             </div>
         </div>
     </div>
