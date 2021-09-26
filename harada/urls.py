@@ -6,6 +6,6 @@ from . import views
 app_name= 'harada'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('inquiry/', views.InquiryView.as_view(), name="inquory"),
+    path('inquiry/', views.InquiryView.as_view(), name="inquiry"),
 
 ]
