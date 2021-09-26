@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'itsuki.app.itsukiConfig',
+    'itsuki.apps.ItsukiConfig',
     'accounts.apps.AccountsConfig',
 
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    
 ]
 
 MIDDLEWARE = [

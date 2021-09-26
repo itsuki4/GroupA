@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 from django.views import generic
 # Create your views here.
-from .froms import InquiryForm
+from . form import InquiryForm
 
 logger = logging.getLogger(__name__)
 
@@ -40,7 +40,7 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
         return diaries
 
 
-from .froms import InquiryForm, DiaryCreateForm
+from .form import InquiryForm, DiaryCreateForm
 
 class DiaryDetailView(LoginRequiredMixin,generic.DetailView):
     model = Diary
