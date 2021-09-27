@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'account/base.html' %}
 
 {% block title %}Log In | Private Diary{% endblock %}
 
@@ -10,7 +10,7 @@
   <div class = "row">
     <div class = "my-div-style">
         <h1>Log In</h1>
-        <form method = "POST" action = "{% url 'account_login' %}">
+        <form class="login" method = "POST" action = "{% url 'account_login' %}">
           {% csrf_token %}
   
           {{ form.as_p }}

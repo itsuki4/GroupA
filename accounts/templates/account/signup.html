@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'account/base.html' %}
 
 {% block title %}サインアップ | Private Diary{% endblock %}
 
@@ -9,7 +9,7 @@
   <div class = "row">
     <div class = "my-div-style">
       <h1>サインアップ</h1>
-      <form method = "POST" action = "{% url 'account_signup' %}">
+      <form class = "signup" id = "signup_form" method = "POST" action = "{% url 'account_signup' %}">
         {% csrf_token %}
 
         {{ form.as_p }}
