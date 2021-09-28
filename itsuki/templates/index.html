@@ -23,15 +23,15 @@
             <div class="row">
                 <div class="my-div-style w-100">
                 <div class="clearfix">
-                    <a class="btn-primary float-right" href="{% url 'harada:diary_create' %}">新規作成</a>
+                    <a class="btn-primary float-right" href="{% url 'itsuki:create' %}">新規作成</a>
                 </div>
-                {% for harada in diary_list %}
+                {% for itsuki in diary_list %}
                 <div class="post-preview">
-                    <a href="{% url 'harada:diary_detail' harada.pk %}">
-                        <h2 class="post-title">{{ harada.title }}</h2>
-                        <h3 class="post-subtitle">{{ harada.content|truncatechars:20 }}</h3>
+                    <a href="{% url 'itsuki:detail' itsuki.pk %}">
+                        <h2 class="post-title">{{ itsuki.title }}</h2>
+                        <h3 class="post-subtitle">{{ itsuki.content|truncatechars:20 }}</h3>
                     </a>
-                    <p class="post-meta">{{ harada.created_at }}</p>
+                    <p class="post-meta">{{ itsuki.created_at }}</p>
                 </div>
                 <hr>
                 {% empty %}

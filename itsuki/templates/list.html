@@ -11,11 +11,11 @@
         <div class ="my-div-style w-100">
             <div class = "col-lg-8 col-md-10 mx-auto">
                 <div class = "clearfix">
-                    <a class = "bth bth-primary float-right"href="{% url 'diary:diary_create' %}">新規作成</a>
+                    <a class = "bth bth-primary float-right"href="{% url 'itsuki:create' %}">新規作成</a>
                 </div>
                 {% for diary in diary_list %}
                 <div class="post-preview">
-                <a href="{% url 'diary:diary_detail' diary.pk%}">
+                <a href="{% url 'itsuki:detail' itsuki.pk%}">
                     <h2 class="post-title">
                         {{diary.title}}
                     </h2>
