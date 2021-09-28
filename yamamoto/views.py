@@ -3,8 +3,9 @@ from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib import messages
+import logging
 
-
+logger = logging.getLogger(__name__)
 class IndexView(generic.TemplateView):
     template_name = "index.html"
     
@@ -18,7 +19,8 @@ class InquiryView(generic.FormView):
     def form_valid(self,form):
         form.send_email()
         messages.success(self.request,'メッセージを送信しました')
-        return super().form_valid(form) 
+        logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
+        return super().form_valid(form)
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Diary
