@@ -18,8 +18,8 @@ from django.urls import path
 from django.urls.conf import include
 
 urlpatterns = [
-    path('harada/admin/', admin.site.urls),
-    path('harada/', include('harada.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('harada.urls')),
     path('accounts/', include('allauth.urls'))
 
 ]
