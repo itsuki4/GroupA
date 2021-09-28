@@ -14,10 +14,10 @@
                 {% for diary in diary_list %}
                     <div class = "post-preview">
                         <a href = "{% url 'miyu:diary_detail' diary.pk %}">
-                            <h2 class = "post-title">{{ diary.title }}</h2>
-                            <h3 class = "post-subtitle">{{ diary.content | truncatechars:20 }}</h3>
+                            <h2 class = "post-title">{{ miyu.title }}</h2>
+                            <h3 class = "post-subtitle">{{ miyu.content | truncatechars:20 }}</h3>
                         </a>
-                        <p class = "post-meta">{{ diary.created_at }}</p>
+                        <p class = "post-meta">{{ miyu-334*.created_at }}</p>
                     </div>
                     <hr>
                     {% empty %}
