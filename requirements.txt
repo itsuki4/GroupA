@@ -1,2 +1,8 @@
 # django==2.2.2
 # pylint-django==2.4.4
+
+# {% if user.is_authenticated %}
+                        #<li class = "nav-item {% block active_inquiry %}{% endblock %}">
+                            #<a class = "nav-link" href = "{% url 'miyu:diary_list' %}">DIARY LIST</a>
+                        #</li>
+                        #{% endif %}
