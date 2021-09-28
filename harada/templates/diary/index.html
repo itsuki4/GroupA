@@ -19,61 +19,51 @@
         {% endblock %}
         <!-- Main Content-->
         {% block contents %}
-        <div class="container">
-            <div class="row">
-                <div class="my-div-style w-100">
-                <div class="clearfix">
-                    <a class="btn-primary float-right" href="{% url 'harada:diary_create' %}">新規作成</a>
-                </div>
-                {% for harada in diary_list %}
-                <div class="post-preview">
-                    <a href="{% url 'harada:diary_detail' harada.pk %}">
-                        <h2 class="post-title">{{ harada.title }}</h2>
-                        <h3 class="post-subtitle">{{ harada.content|truncatechars:20 }}</h3>
-                    </a>
-                    <p class="post-meta">{{ harada.created_at }}</p>
-                </div>
-                <hr>
-                {% empty %}
-                <p>日記がありません。</p>
-                {% endfor %}
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
 
-                {% if is_paginated %}
-                <ul class="pagination">
-                    <!--前のページへのリンク-->
-                    {% if page_obj.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    {% endif %}
-
-                    <!--ページ数の表示-->
-                    {% for page_num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == page_num %}
-                    <li class="page-item activ">
-                        <a class="page-link" href="#">{{ page_num }}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-
-                    <!--次のページへのリンク-->
-                    {% if page_obj.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-                {% endif %}
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Web Diary</h2>
+                            <p>Web上で作成/編集/削除ができる日記</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-{% endblock %}
+        </section>
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Save Your Diary</h2>
+                            <p>あなたの日記をWebに保存</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Membership System</h2>
+                            <p>会員制のWeb日記サービス</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock %}
