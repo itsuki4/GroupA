@@ -31,6 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'miyu:inquiry' %}">Inquiry</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'miyu:diary_list' %}">Diary List</a></li>
                         
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
