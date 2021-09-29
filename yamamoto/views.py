@@ -1,15 +1,16 @@
-from django.shortcuts import render
-
-from django.views import generic
-from django.urls import reverse_lazy
-from django.contrib import messages
 import logging
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.views import generic
+from .forms import InquiryForm,DiaryCreateForm
+from .models import Diary
 
 logger = logging.getLogger(__name__)
+
 class IndexView(generic.TemplateView):
     template_name = "index.html"
     
-from .forms import InquiryForm,DiaryCreateForm
 
 class InquiryView(generic.FormView):
     template_name = "inquiry.html"
@@ -22,12 +23,11 @@ class InquiryView(generic.FormView):
         logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Diary
 
 class DiaryListView(LoginRequiredMixin,generic.ListView):
     model=Diary
     template_name='list.html'
+    paginate_by = 2
 
     def get_queryset(self):
         diaries = Diary.objects.filter(user=self.request.user).order_by('-created_at')
@@ -78,4 +78,3 @@ class DiaryDeleteView(LoginRequiredMixin,generic.DeleteView):
     def delete(self,request,*args,**kwargs):
         messages.success(self.request,"日記を削除しました。")
         return super().delete(request,*args,**kwargs)
-

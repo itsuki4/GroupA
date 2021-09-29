@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/mystyles.css' %}" rel="stylesheet" />
 
         <!--My style-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
@@ -32,12 +33,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item{% block active_inquiry %}{% endblock %}">
-                        <li class="nav-link"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'yamamoto:list' %}">List</a></li>
-                        <li class="nav-link"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'account_signup' %}">Sign Up</a></li>
-                        <li class="nav-link"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'account_login' %}">Log In</a></li>
-                        <li class="nav-link"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'yamamoto:inquiry' %}">Inquiry</a></li>
-
+                        <li class="nav-item"><a class="nav-link" href="{% url 'yamamoto:inquiry' %}">Inquiry</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'yamamoto:list' %}">List</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Log In</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

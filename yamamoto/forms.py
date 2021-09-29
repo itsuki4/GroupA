@@ -1,6 +1,5 @@
 from django import forms
 from django.core.mail import EmailMessage
-from django.forms import fields
 
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
