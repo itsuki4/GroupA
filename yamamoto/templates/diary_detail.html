@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'diary/base.html' %}
 {% load static %}
 
 {% block title %}日記詳細|Private Diary{% endblock %}
@@ -71,8 +71,8 @@
             </div>
         </div>
 
-        <a class="btn btn-success mt-5 mb-3" href="{% url 'yamamoto:update' object.pk %}">編集</a>
-        <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'yamamoto:delete' object.pk %}">削除</a>
+        <a class="btn btn-success mt-5 mb-3" href="{% url 'yamamoto:diary_update' object.pk %}">編集</a>
+        <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'yamamoto:diary_delete' object.pk %}">削除</a>
     </div>
 </div>
 {% endblock %}

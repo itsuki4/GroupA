@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'diary/base.html' %}
 {% load static %}
 
 {% block title %}日記一覧 | Private Diary{% endblock %}
@@ -9,11 +9,11 @@
         <div class="my-div-style w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="{% url 'yamamoto:create' %}">新規作成</a>
+                    <a class="btn btn-primary float-right" href="{% url 'yamamoto:diary_create' %}">新規作成</a>
                 </div>
-                {% for yamamoto in list %}
+                {% for yamamoto in diary_list %}
                     <div class="post-preview">
-                        <a href="{% url 'yamamoto:detail' yamamoto.pk %}">
+                        <a href="{% url 'yamamoto:diary_detail' yamamoto.pk %}">
                           <h2 class="post-title">{{ yamamoto.title }}</h2>
                           <h3 class="post-subtitle">{{ yamamoto.content|truncatechars:20 }}</h3>
                         </a>
