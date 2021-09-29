@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>{% block title %}{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -18,17 +18,17 @@
         <link href="{% static 'css/mystyles.css' %}" rel="stylesheet" type="text/css" />
         {% block head %}{% endblock %}
     </head>
-    <body id = "page-top">
+    <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{% url 'miyu:index' %}">Private Diary</a>
+                <a class="navbar-brand" href="../">Private Diary</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'miyu:inquiry' %}">Inquiry</a></li>
                         <li class ="nav-item"><a class = "nav-link" href = "{% url 'miyu:diary_list' %}">DIARY LIST</a></li>
                         {% if user.is_authenticated %}
@@ -47,7 +47,7 @@
         {% if messages %}
         <div class = "container">
             <div class = "row">
-                <div class =　"my-div-style ">
+                <div class =　"my-div-style w-100">
                     <ul class = "messages" style = "list-style: none;">
                         {% for msg in messages %}
                         <li {% if msg.tags %} class = "{{ msg.tags }}"{% endif %}>

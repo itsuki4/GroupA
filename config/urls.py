@@ -10,4 +10,4 @@ urlpatterns = [
 
 from django.contrib.staticfiles.urls import static
 from . import settings
-urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_ROOT, document_root = settings.MEDIA_ROOT)
