@@ -1,21 +1,22 @@
-{% extends 'base.html'%}
-{% load static%}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}日記削除|private Diary{% endblock %}
+{% block title %}日記削除{% endblock %}
+{% block active_diary_list %}active{% endblock %}
 
-{% block active_list%}active{% endblock %}
-
+        <!-- Content section 1-->
 {% block contents %}
     <div class="container">
         <div class="row">
-            <div class = "my-div-style w-100">
-            <form method="POST" enctype='multipart/form-date'>
+            <div class="my-div-style w-100">
+                <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
-                <p>本当に削除しますか？</p>
-                <button class ="btn btn-primary　mt-5 mt-2"type="submit">削除</button>
-                <a class="bth bth-primary mt-5 mt-2"href="{% url 'itsuki:detail' object.pk %}">キャンセル</a>
+                <p>ほんとに削除しますか？</p>
+                <button class="btn btn-primary mt-5" type="submit">削除</button>
+                <a class="btn btn-secondary mt-5 ml-2" href="{% url 'itsuki:detail' object.pk %}">キャンセル</a>
                 </form>
+     
             </div>
         </div>
     </div>
-    {% endblock %}
+{% endblock %} 

@@ -1,22 +1,23 @@
-{% extends 'base.html'%}
-{% load static%}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}日記作成|private Diary{% endblock %}
+{% block title %}日記作成{% endblock %}
+{% block active_diary_list %}active{% endblock %}
 
-{%block active_list%}active{%endblock%}
-
+        <!-- Content section 1-->
 {% block contents %}
     <div class="container">
         <div class="row">
-            <div class = "my-div-style w-100">
-            <form method="POST" enctype='multipart/form-date'>
+            <div class="my-div-style w-100">
+                <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
-                <table class ="table">
-                    {{form.as_table}}
+                <table class="table">
+                    {{ form.as_table }}
                 </table>
-                <button class ="btn btn-primary"type="submit">作成</button>
-            </form>
+                <button class="btn btn-primary" type="submit">作成</button>
+                </form>
+     
             </div>
         </div>
     </div>
-    {% endblock %}
+{% endblock %} 
