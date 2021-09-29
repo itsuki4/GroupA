@@ -15,9 +15,9 @@
         <h1>{% trans "Sign In" %}</h1>
 
 
-        <p>{% blocktrans %}登録が完了していない場合は
+        <p>{% blocktrans %}If you have not created an account yet, then please
 
-          <a href="{{ signup_url }}">登録ページ</a> で登録してください。{% endblocktrans %}</p>
+          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
           
           <form class="login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
@@ -36,3 +36,4 @@
     </div>      
 
 {% endblock %}
+
