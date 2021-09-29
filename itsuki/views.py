@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 from django.views import generic
 # Create your views here.
-from . form import InquiryForm
+from . forms import InquiryForm
 
 logger = logging.getLogger(__name__)
 
@@ -40,12 +40,12 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
         return diaries
 
 
-from .form import InquiryForm, DiaryCreateForm
+from .forms import InquiryForm, DiaryCreateForm
 
 class DiaryDetailView(LoginRequiredMixin,generic.DetailView):
     model = Diary
     template_name = 'detail.html'
-    # pk_url_kwarg = 'id'
+
     
 
 class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
@@ -55,7 +55,6 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy('itsuki:list')
 
     def form_valid(self, form):
-        #p270
         diary = form.save(commit=False)
         diary.user = self.request.user
         diary.save()
@@ -73,7 +72,7 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = DiaryCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('detail', kwargs={'pk':self.kwargs['pk']})
+        return reverse_lazy('itsuki:detail', kwargs={'pk':self.kwargs['pk']})
 
     def form_valid(self,form):
         messages.success(self.request,'日記を更新しました。')
@@ -87,7 +86,7 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
 class DiaryDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Diary
     template_name = 'delete.html'
-    success_url = reverse_lazy('list')
+    success_url = reverse_lazy('itsuki:list')
 
     def delete(self,request, *args, **kwargs):
         messages.success(self.request,"日記を削除しました。")
