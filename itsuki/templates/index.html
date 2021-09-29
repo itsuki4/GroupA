@@ -19,25 +19,22 @@
         </header>
         {% endblock %}
         <!-- Main Content-->
-        {% block contents %}
-        <div class="container">
-            <div class="row">
-                <div class="my-div-style w-100">
-                <div class="clearfix">
-                    <a class="btn-primary float-right" href="{% url 'itsuki:create' %}">新規作成</a>
+        {% block content %}
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">日常の出来事を記録してみませんか？</h2>
+                            <p>貴方の記録した思い出は、忘れた出来事を振り返る楽しみが味わえますよ!!</p>
+                        </div>
+                    </div>
                 </div>
-                {% for itsuki in diary_list %}
-                <div class="post-preview">
-                    <a href="{% url 'itsuki:detail' object.pk %}">
-                        <h2 class="post-title">{{ itsuki.title }}</h2>
-                        <h3 class="post-subtitle">{{ itsuki.content|truncatechars:20 }}</h3>
-                    </a>
-                    <p class="post-meta">{{ itsuki.created_at }}</p>
-                </div>
-                <hr>
-                {% empty %}
-                <p>日記がありません。</p>
-                {% endfor %}
+            </div>
+        </section>
 
                 {% if is_paginated %}
                 <ul class="pagination">

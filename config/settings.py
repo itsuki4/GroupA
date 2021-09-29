@@ -125,6 +125,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 SITE_ID=1
 AUTHENTICATION_BACKEND = (
     'allauth.account.auth_backends.authentictionBackend',
+
     'django.contrib.auth.backends.ModelBackend',
 )
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
